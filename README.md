@@ -5,7 +5,7 @@ Writing test suite with [Jasmine](http://jasmine.github.io/) for web-based appli
 
 ## Purpose?
 
-* Demonstrate ability to write effective tests that require analyzing multiple aspects of an application including the HTML, CSS and JavaScript.
+* Demonstrate ability to write effective tests that require analyzing multiple aspects of an application including HTML, CSS and JavaScript.
 
 
 # Instructions
