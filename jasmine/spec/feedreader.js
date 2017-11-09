@@ -80,12 +80,42 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         beforeEach(function(done) {
+           loadFeed(0 ,function() {
+             done();
+           });
+         });
+
+         it('there is entry after loadFeed is called', function(done) {
+           expect($('.feed').find('.entry')).toBeDefined();
+           done();
+         });
        });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         let oldFeed,
+             newFeed;
+         beforeEach(function(done) {
+           loadFeed(0, function() {
+             oldFeed = $('.feed').find('h2').text();
+             done();
+           });
+         });
+         beforeEach(function(done) {
+           loadFeed(1, function() {
+             newFeed = $('.feed').find('h2').text();
+             done();
+           });
+         });
+
+         it('new feed changes content', function(done) {
+           expect(oldFeed === newFeed).toBe(false);
+           done();
+         });
+       });
 }());
