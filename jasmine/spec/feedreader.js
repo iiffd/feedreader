@@ -29,9 +29,9 @@ $(function() {
 
         /* Check each item in allFeeds has defined url. */
          it('urls in feed are defined', function() {
-           for (const index in allFeeds) {
-             expect(allFeeds[index].url).toBeDefined();
-           }
+           allFeeds.forEach(function(feed) {
+             expect(feed.url).toBeDefined();
+           });
          });
 
         /* Check each item in allFeeds has defined name. */
