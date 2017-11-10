@@ -85,15 +85,13 @@ $(function() {
          beforeEach(function(done) {
            loadFeed(0, function() {
              oldFeed = $('.feed').find('h2').text();
-             done();
            });
-         });
-         beforeEach(function(done) {
            loadFeed(1, function() {
              newFeed = $('.feed').find('h2').text();
              done();
            });
          });
+
 
          it('new feed changes content', function(done) {
            expect(oldFeed).not.toBe(newFeed);
