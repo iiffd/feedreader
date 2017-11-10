@@ -31,14 +31,16 @@ $(function() {
          it('urls in feed are defined', function() {
            allFeeds.forEach(function(feed) {
              expect(feed.url).toBeDefined();
+             expect(feed.url).not.toBe(0);
            });
          });
 
         /* Check each item in allFeeds has defined name. */
          it('names in feed are defined', function() {
-           for (const index in allFeeds) {
-             expect(allFeeds[index].name).toBeDefined();
-           }
+           allFeeds.forEach(function(feed) {
+             expect(feed.name).toBeDefined();
+             expect(feed.name).not.toBe(0);
+           });
          });
     });
 
