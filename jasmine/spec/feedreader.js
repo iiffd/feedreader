@@ -8,7 +8,7 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
-$(() => {
+$(function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -31,7 +31,7 @@ $(() => {
          it('urls in feed are defined', () => {
            allFeeds.forEach((feed) => {
              expect(feed.url).toBeDefined();
-             expect(feed.url).not.toBe(0);
+             expect(feed.url.length).not.toBe(0);
            });
          });
 
@@ -39,7 +39,7 @@ $(() => {
          it('names in feed are defined', () => {
            allFeeds.forEach((feed) => {
              expect(feed.name).toBeDefined();
-             expect(feed.name).not.toBe(0);
+             expect(feed.name.length).not.toBe(0);
            });
          });
     });
@@ -71,8 +71,8 @@ $(() => {
          });
 
          it('there is entry after loadFeed is called', (done) => {
-           expect($('.feed').find('h2').text()).not.toBe(0);
-           expect($('.feed').find('h2').text()).toBeDefined();
+           expect($('.feed').find('.entry h2').text().length).not.toBe(0);
+           expect($('.feed').find('.entry h2').text()).toBeDefined();
            done();
          });
        });
@@ -85,17 +85,18 @@ $(() => {
          beforeEach((done) => {
            loadFeed(0, () => {
              oldFeed = $('.feed').find('h2').text();
+
+             loadFeed(1, () => {
+               newFeed = $('.feed').find('h2').text();
+               done();
+             });
            });
-           loadFeed(1, () => {
-             newFeed = $('.feed').find('h2').text();
-             done();
-           });
+
          });
 
 
          it('new feed changes content', (done) => {
            expect(oldFeed).not.toBe(newFeed);
-           done();
          });
        });
 }());
