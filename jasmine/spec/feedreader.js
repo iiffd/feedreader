@@ -71,7 +71,8 @@ $(function() {
          });
 
          it('there is entry after loadFeed is called', function(done) {
-           expect($('.feed').find('.entry')).toBeDefined();
+           expect($('.feed').find('h2').text()).not.toBe(0);
+           expect($('.feed').find('h2').text()).toBeDefined();
            done();
          });
        });
@@ -95,7 +96,7 @@ $(function() {
          });
 
          it('new feed changes content', function(done) {
-           expect(oldFeed === newFeed).toBe(false);
+           expect(oldFeed).not.toBe(newFeed);
            done();
          });
        });
