@@ -65,15 +65,11 @@ $(function() {
     describe('Initial Entries', () => {
         /* Check that feed container has entry elements after async call. */
          beforeEach((done) => {
-           loadFeed(0 ,() => {
-             done();
-           });
+           loadFeed(0, done);
          });
 
-         it('there is entry after loadFeed is called', (done) => {
-           expect($('.feed').find('.entry h2').text().length).not.toBe(0);
-           expect($('.feed').find('.entry h2').text()).toBeDefined();
-           done();
+         it('there is entry after loadFeed is called', () => {
+           expect($('.feed').find('.entry').text().length).not.toBe(0);
          });
        });
 
@@ -97,6 +93,7 @@ $(function() {
 
          it('new feed changes content', (done) => {
            expect(oldFeed).not.toBe(newFeed);
+           done();
          });
        });
 }());
